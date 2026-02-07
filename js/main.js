@@ -702,3 +702,49 @@ function openTab(evt, sizeName) {
     evt.currentTarget.classList.add("active");
 }
 // نهايه تابه الاسعار
+
+// بداية البرفانات الكوبي
+let currentSwiper;
+
+function initAtrGallery() {
+    if (currentSwiper) {
+        if (Array.isArray(currentSwiper)) currentSwiper.forEach(s => s.destroy(true, true));
+        else currentSwiper.destroy(true, true);
+    }
+
+    currentSwiper = new Swiper(".atr-visible .myAtrSwiper", {
+        slidesPerView: 2,
+        spaceBetween: 20,
+        centeredSlides: true,
+        loop: true,
+        autoplay: { delay: 3000, disableOnInteraction: false },
+        breakpoints: {
+            640: { slidesPerView: 3 },
+            1024: { slidesPerView: 5 }
+        },
+    });
+}
+
+function switchAtrTab(panelId, btn) {
+    document.querySelectorAll('.atr-panel-box').forEach(p => p.classList.remove('atr-visible'));
+    document.querySelectorAll('.atr-tab-btn').forEach(b => b.classList.remove('atr-active'));
+    document.getElementById(panelId).classList.add('atr-visible');
+    btn.classList.add('atr-active');
+    setTimeout(initAtrGallery, 50);
+}
+
+function openAtrModal(name, img, price, desc) {
+    document.getElementById('atrPopName').innerText = name;
+    document.getElementById('atrPopImg').src = img;
+    document.getElementById('atrPopPrice').innerText = price;
+    document.getElementById('atrPopDesc').innerText = desc;
+    document.getElementById('atrPopWa').href = "https://wa.me/201028278500?text=" + encodeURIComponent("طلب عطر: " + name);
+    document.getElementById('atrModalOverlay').style.display = 'flex';
+}
+
+function closeAtrModal() { document.getElementById('atrModalOverlay').style.display = 'none'; }
+
+document.addEventListener("DOMContentLoaded", initAtrGallery);
+window.onclick = function(e) { if (e.target == document.getElementById('atrModalOverlay')) closeAtrModal(); }
+
+// نهاية برفانات الكوبي
