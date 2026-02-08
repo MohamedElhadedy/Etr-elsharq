@@ -63,6 +63,7 @@ ul {
     width: 1170px;
   }
 }
+
 /* 1. العنوان الرئيسي - تعديل المحاذاة للموبايل */
 /* --- تعديل العنوان الرئيسي لضبط العرض والأنميشن --- */
 
@@ -70,15 +71,15 @@ ul {
   text-transform: uppercase;
   margin: 0 auto 80px;
   border: 2px solid black;
-  padding: 10px 40px; 
+  padding: 10px 40px;
   font-size: 30px;
   /* width: fit-content مهمة جداً عشان يفضل على قد الكلمة */
-  width: fit-content; 
+  width: fit-content;
   position: relative;
   z-index: 1;
   transition: color 0.3s, border-color 0.3s;
   /* منع خروج العنوان بره الشاشة في الموبايل */
-  max-width: 95%; 
+  max-width: 95%;
   text-align: center;
 }
 
@@ -96,8 +97,13 @@ ul {
   z-index: -1;
 }
 
-.main-title::before { left: -30px; }
-.main-title::after { right: -30px; }
+.main-title::before {
+  left: -30px;
+}
+
+.main-title::after {
+  right: -30px;
+}
 
 /* تشغيل الضمة لما الكلاس active يتضاف بالسكرول */
 .main-title.active {
@@ -121,11 +127,12 @@ ul {
     width: 12px;
     height: 12px;
   }
+
   100% {
     left: 0;
     border-radius: 0;
     /* التعديل هنا: يملى نص المستطيل فقط */
-    width: 50.5%; 
+    width: 50.5%;
     height: 100%;
   }
 }
@@ -136,11 +143,12 @@ ul {
     width: 12px;
     height: 12px;
   }
+
   100% {
     right: 0;
     border-radius: 0;
     /* التعديل هنا: يملى النص التاني فقط */
-    width: 50.5%; 
+    width: 50.5%;
     height: 100%;
   }
 }
@@ -151,8 +159,14 @@ ul {
     font-size: 22px;
     padding: 10px 30px;
   }
-  .main-title::before { left: -15px; }
-  .main-title::after { right: -15px; }
+
+  .main-title::before {
+    left: -15px;
+  }
+
+  .main-title::after {
+    right: -15px;
+  }
 }
 
 /* 3. صور النقط (الاستريكس) اللي في الجوانب - لازم تختفي في الموبايل */
@@ -166,7 +180,8 @@ ul {
 
 @media (max-width: 991px) {
   .dots {
-    display: none; /* النقط دي بتبوظ شكل الموبايل وبتخرج بره، اخفيها أحسن */
+    display: none;
+    /* النقط دي بتبوظ شكل الموبايل وبتخرج بره، اخفيها أحسن */
   }
 }
 
@@ -188,7 +203,8 @@ ul {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding: 0 15px; /* مسافة بسيطة من الجوانب */
+  padding: 0 15px;
+  /* مسافة بسيطة من الجوانب */
 }
 
 .header .logo {
@@ -203,17 +219,20 @@ ul {
 
 /* تنسيق الـ 3 شرط (Menu Toggle) */
 .menu-toggle {
-  display: none; /* مخفي في الديسكتوب */
+  display: none;
+  /* مخفي في الديسكتوب */
   flex-direction: column;
   cursor: pointer;
-  gap: 5px; /* المسافة بين الشرط */
+  gap: 5px;
+  /* المسافة بين الشرط */
 }
 
 .menu-toggle span {
   display: block;
   width: 28px;
   height: 3px;
-  background-color: var(--main-color, #2196f3); /* لون الشرط */
+  background-color: var(--main-color, #2196f3);
+  /* لون الشرط */
   transition: 0.3s;
 }
 
@@ -224,7 +243,7 @@ ul {
   padding: 0;
 }
 
-.header .main-nav > li > a {
+.header .main-nav>li>a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -240,7 +259,8 @@ ul {
 /* تعديلات الموبايل (أقل من 767px) */
 @media (max-width: 767px) {
   .header .container {
-    height: 60px; /* ارتفاع الهيدر في الموبايل */
+    height: 60px;
+    /* ارتفاع الهيدر في الموبايل */
   }
 
   .header .logo {
@@ -250,12 +270,13 @@ ul {
 
   /* إظهار الـ 3 شرط */
   .menu-toggle {
-    display: flex; 
+    display: flex;
   }
 
   /* تحويل القائمة لمنيو مخفية تظهر عند الضغط */
   .header .main-nav {
-    display: none; /* مخفية افتراضياً */
+    display: none;
+    /* مخفية افتراضياً */
     position: absolute;
     top: 100%;
     left: 0;
@@ -271,7 +292,7 @@ ul {
     display: flex;
   }
 
-  .header .main-nav > li > a {
+  .header .main-nav>li>a {
     height: 50px;
     padding: 0;
     font-size: 16px;
@@ -281,39 +302,47 @@ ul {
 
 
 /* تأثير الخط العلوي عند الهوفر */
-.header .main-nav > li {
+.header .main-nav>li {
   position: relative;
 }
 
-.header .main-nav > li > a::before {
+.header .main-nav>li>a::before {
   content: "";
   position: absolute;
-  width: 0; /* يبدأ بعرض صفر */
+  width: 0;
+  /* يبدأ بعرض صفر */
   height: 4px;
-  background-color: var(--main-color); /* اللون الأزرق الأساسي */
-  top: 0; /* يظهر من الأعلى */
+  background-color: var(--main-color);
+  /* اللون الأزرق الأساسي */
+  top: 0;
+  /* يظهر من الأعلى */
   left: 0;
   transition: var(--main-transition, 0.3s);
 }
 
-.header .main-nav > li > a:hover {
+.header .main-nav>li>a:hover {
   color: var(--main-color);
   background-color: #fafafa;
 }
 
-.header .main-nav > li > a:hover::before {
-  width: 100%; /* يتمدد ليغطي عرض الكلمة بالكامل */
+.header .main-nav>li>a:hover::before {
+  width: 100%;
+  /* يتمدد ليغطي عرض الكلمة بالكامل */
 }
+
 /* End Header */
 /* Start Landing */
 .landing {
   position: relative;
   height: 100vh;
   display: flex;
-  align-items: flex-end; /* وضع المحتوى بالأسفل */
-  justify-content: center; /* توسيط المحتوى بالعرض */
+  align-items: flex-end;
+  /* وضع المحتوى بالأسفل */
+  justify-content: center;
+  /* توسيط المحتوى بالعرض */
   overflow: hidden;
-  background-color: #101010; /* لون خلفية في حال تأخر الفيديو */
+  background-color: #101010;
+  /* لون خلفية في حال تأخر الفيديو */
 }
 
 .back-video {
@@ -333,14 +362,15 @@ ul {
   width: 100%;
   height: 100%;
   /* تدريج لوني يجعل الأسفل أغمق ليظهر النص بوضوح */
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%);
   z-index: 2;
 }
 
 .landing .container {
   position: relative;
   z-index: 3;
-  padding-bottom: 100px; /* المسافة من أسفل الشاشة */
+  padding-bottom: 100px;
+  /* المسافة من أسفل الشاشة */
   display: flex;
   justify-content: center;
   width: 100%;
@@ -356,7 +386,8 @@ ul {
   font-size: 45px;
   margin: 0 0 20px;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-  min-height: 1.2em; /* يحافظ على مكانه قبل الكتابة */
+  min-height: 1.2em;
+  /* يحافظ على مكانه قبل الكتابة */
 }
 
 .landing .text p {
@@ -387,7 +418,8 @@ ul {
 }
 
 /* مؤشر الكتابة | */
-#typewriter-h1::after, #typewriter-p::after {
+#typewriter-h1::after,
+#typewriter-p::after {
   content: "|";
   margin-left: 5px;
   animation: blink 0.7s infinite;
@@ -395,16 +427,32 @@ ul {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 /* للموبايل */
 @media (max-width: 767px) {
-  .landing .text h1 { font-size: 28px; }
-  .landing .text p { font-size: 18px; }
-  .landing .container { padding-bottom: 60px; }
+  .landing .text h1 {
+    font-size: 28px;
+  }
+
+  .landing .text p {
+    font-size: 18px;
+  }
+
+  .landing .container {
+    padding-bottom: 60px;
+  }
 }
+
 /* End Landing */
 /* Start Articles */
 .articles {
@@ -476,121 +524,137 @@ ul {
 
 /* بدايه اسعار الازاز */
 .pricing-tabs-section {
-    direction: rtl;
-    text-align: center;
-    padding: 50px 10px;
-    font-family: sans-serif;
+  direction: rtl;
+  text-align: center;
+  padding: 50px 10px;
+  font-family: sans-serif;
 }
 
 .tabs-container {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .tab-btn {
-    padding: 12px 25px;
-    font-size: 18px;
-    border: 2px solid #2196f3;
-    background: #fff;
-    color: #2196f3;
-    cursor: pointer;
-    margin: 5px;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: 0.3s;
+  padding: 12px 25px;
+  font-size: 18px;
+  border: 2px solid #2196f3;
+  background: #fff;
+  color: #2196f3;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 .tab-btn.active {
-    background: #2196f3;
-    color: #fff;
+  background: #2196f3;
+  color: #fff;
 }
 
 .tab-content {
-    display: none;
-    width: 100%; /* عشان يملأ عرض السيكشن */
+  display: none;
+  width: 100%;
+  /* عشان يملأ عرض السيكشن */
 }
 
 .active-content {
-    display: flex !important;
+  display: flex !important;
 }
 
 .cards-wrapper {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: space-evenly; /* بيوزع الفراغات بالتساوي ويخلي الكروت تملأ المساحة */
-    width: 100%;
-    max-width: 1200px; /* عشان على الشاشات الكبيرة أوي ميبعدوش عن بعض بشكل وحش */
-    margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  /* بيوزع الفراغات بالتساوي ويخلي الكروت تملأ المساحة */
+  width: 100%;
+  max-width: 1200px;
+  /* عشان على الشاشات الكبيرة أوي ميبعدوش عن بعض بشكل وحش */
+  margin: 0 auto;
 }
 
 /* تصميم الكارت للكمبيوتر */
 .card {
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    padding: 20px;
-    width: calc(45% - 20px); /* بياخد حوالي نص المساحة مع مراعاة المسافات */
-    max-width: 400px; /* ليميت عشان ميكبرش بزيادة في الشاشات الواسعة */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: 0.3s;
-    background: #fff;
-    box-sizing: border-box; /* عشان الـ padding ميأثرش على العرض */
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 20px;
+  width: calc(45% - 20px);
+  /* بياخد حوالي نص المساحة مع مراعاة المسافات */
+  max-width: 400px;
+  /* ليميت عشان ميكبرش بزيادة في الشاشات الواسعة */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  background: #fff;
+  box-sizing: border-box;
+  /* عشان الـ padding ميأثرش على العرض */
 }
 
-.card:hover { transform: translateY(-5px); }
+.card:hover {
+  transform: translateY(-5px);
+}
 
-.card img { width: 100%; height: auto; object-fit: contain; }
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 
 .price {
-    font-size: 1.5rem;
-    color: #2196f3;
-    font-weight: bold;
-    margin: 15px 0;
+  font-size: 1.5rem;
+  color: #2196f3;
+  font-weight: bold;
+  margin: 15px 0;
 }
 
 .buy-btn {
-    background: #2196f3;
-    color: #fff;
-    border: none;
-    padding: 12px;
-    width: 100%;
-    border-radius: 25px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 /* --- التعديل للموبايل عشان يفرش الشاشة --- */
 @media (max-width: 600px) {
-    .cards-wrapper {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        gap: 10px !important;
-        padding: 10px;
-        justify-content: space-between !important; /* بيخلي الكرت اليمين في الآخر واليسار في الآخر */
-    }
+  .cards-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+    padding: 10px;
+    justify-content: space-between !important;
+    /* بيخلي الكرت اليمين في الآخر واليسار في الآخر */
+  }
 
-    .card {
-        width: 48% !important; /* الكارتين يملأوا الشاشة بالظبط مع فرق بسيط للـ gap */
-        max-width: unset !important;
-        padding: 15px 10px !important;
-    }
+  .card {
+    width: 48% !important;
+    /* الكارتين يملأوا الشاشة بالظبط مع فرق بسيط للـ gap */
+    max-width: unset !important;
+    padding: 15px 10px !important;
+  }
 
-    .card img {
-        height: 150px !important; /* تكبير الصورة شوية عشان المساحة بقت أكبر */
-    }
+  .card img {
+    height: 150px !important;
+    /* تكبير الصورة شوية عشان المساحة بقت أكبر */
+  }
 }
 
 /* إخفاء التابات في البداية */
 .tab-content {
-    display: none;
+  display: none;
 }
 
 /* إظهار التابة النشطة فقط */
 .active-content {
-    display: block !important;
+  display: block !important;
 }
+
 /* نهاية الاسعار */
 /* Start Gallery - عطر الشرق */
 .gallery {
@@ -655,9 +719,12 @@ ul {
 
 /* تأثير الفلاش */
 @keyframes flashing {
-  0%, 40% {
+
+  0%,
+  40% {
     opacity: 1;
   }
+
   100% {
     opacity: 0;
     width: 200%;
@@ -672,11 +739,12 @@ ul {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)) !important;
     gap: 20px;
   }
-  
+
   .gallery .box h2 {
     font-size: 18px;
   }
 }
+
 /* End Gallery */
 
 /* بداية عرض البرفانات الكوبي */
@@ -743,7 +811,8 @@ ul {
 
 .features .box h2 {
   position: relative;
-  font-size: 28px; /* تصغير بسيط للميزان */
+  font-size: 28px;
+  /* تصغير بسيط للميزان */
   margin: auto;
   width: fit-content;
   z-index: 3;
@@ -780,8 +849,14 @@ ul {
 }
 
 /* الألوان الخاصة بكل ميزة */
-.features .quality .img-holder::before { background-color: rgb(244 64 54 / 45%); }
-.features .quality h2::after { background-color: #f44036; }
+.features .quality .img-holder::before {
+  background-color: rgb(244 64 54 / 45%);
+}
+
+.features .quality h2::after {
+  background-color: #f44036;
+}
+
 .features .quality a {
   color: #f44036;
   border-color: #f44036;
@@ -790,8 +865,14 @@ ul {
   background-position: right bottom;
 }
 
-.features .time .img-holder::before { background-color: rgb(0 150 136 / 45%); }
-.features .time h2::after { background-color: #009688; }
+.features .time .img-holder::before {
+  background-color: rgb(0 150 136 / 45%);
+}
+
+.features .time h2::after {
+  background-color: #009688;
+}
+
 .features .time a {
   color: #009688;
   border-color: #009688;
@@ -800,8 +881,14 @@ ul {
   background-position: right bottom;
 }
 
-.features .passion .img-holder::before { background-color: rgb(3 169 244 / 45%); }
-.features .passion h2::after { background-color: #03a9f4; }
+.features .passion .img-holder::before {
+  background-color: rgb(3 169 244 / 45%);
+}
+
+.features .passion h2::after {
+  background-color: #03a9f4;
+}
+
 .features .passion a {
   color: #03a9f4;
   border-color: #03a9f4;
@@ -820,18 +907,22 @@ ul {
   .features .container {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)) !important;
   }
+
   .features .box h2 {
     font-size: 24px;
   }
+
   .features .box p {
     font-size: 16px;
     padding: 15px;
   }
+
   /* ضبط الميل في الشاشات الصغيرة عشان ميخرمش الكارت */
   .features .box .img-holder::after {
-      border-width: 0px 0px 100px 400px;
+    border-width: 0px 0px 100px 400px;
   }
 }
+
 /* End Features */
 /* Start Testimonials - عطر الشرق المطور */
 .testimonials {
@@ -844,7 +935,7 @@ ul {
 .testimonials .container {
   display: grid;
   /* الحفاظ على 3 كروت في الصف الواحد للشاشات الكبيرة */
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 40px;
 }
 
@@ -874,7 +965,8 @@ ul {
   height: 3px;
   top: -3px;
   background-color: var(--main-color);
-  width: 0; /* البداية من صفر */
+  width: 0;
+  /* البداية من صفر */
   transition: var(--main-transition);
 }
 
@@ -921,20 +1013,24 @@ ul {
   .testimonials .container {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)) !important;
   }
-  .testimonials .box h3, 
+
+  .testimonials .box h3,
   .testimonials .box .rate {
     padding-right: 0;
     text-align: center;
     margin-top: 40px;
   }
+
   .testimonials .box img {
     right: 50%;
     transform: translateX(50%);
   }
+
   .testimonials .box p {
     text-align: center;
   }
 }
+
 /* End Testimonials */
 /* End Testimonials */
 
@@ -965,7 +1061,8 @@ ul {
 }
 
 .services .box p {
-  text-align: right; /* محاذاة لليمين عشان العربي */
+  text-align: right;
+  /* محاذاة لليمين عشان العربي */
   direction: rtl;
   padding: 0 20px;
   line-height: 1.7;
@@ -973,7 +1070,8 @@ ul {
   margin-top: 15px;
   margin-bottom: 15px;
   font-size: 15px;
-  flex-grow: 1; /* دفع الجزء السفلي لآخر الكارت */
+  flex-grow: 1;
+  /* دفع الجزء السفلي لآخر الكارت */
 }
 
 .services .box::before {
@@ -996,14 +1094,14 @@ ul {
   width: 100%;
 }
 
-.services .box > i {
+.services .box>i {
   margin: 30px auto 20px;
   display: block;
   text-align: center;
   color: #d5d5d5;
 }
 
-.services .box > h3 {
+.services .box>h3 {
   text-align: center;
   margin: 10px 0 20px;
   font-size: 22px;
@@ -1015,7 +1113,8 @@ ul {
   position: relative;
   background-color: #f9f9f9;
   text-align: right;
-  margin-top: auto; /* الحفاظ على مكان التفاصيل أسفل الكارت */
+  margin-top: auto;
+  /* الحفاظ على مكان التفاصيل أسفل الكارت */
 }
 
 .services .box .info::before {
@@ -1059,16 +1158,18 @@ ul {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)) !important;
     gap: 20px;
   }
-  
+
   .services .box h3 {
     font-size: 19px;
   }
 
   .services .box p {
     font-size: 14px;
-    text-align: center; /* أشيك في الموبايل */
+    text-align: center;
+    /* أشيك في الموبايل */
   }
 }
+
 /* End Services */
 /* Start Skills */
 .our-skills {
@@ -1494,8 +1595,16 @@ ul {
   z-index: -1;
   transition: var(--main-transition);
 }
-.pricing .box::before { left: 0; top: 0; }
-.pricing .box::after { right: 0; bottom: 0; }
+
+.pricing .box::before {
+  left: 0;
+  top: 0;
+}
+
+.pricing .box::after {
+  right: 0;
+  bottom: 0;
+}
 
 .pricing .box:hover::before,
 .pricing .box:hover::after {
@@ -1534,7 +1643,8 @@ ul {
 .pricing .box .title {
   font-weight: bold;
   margin: 30px 0;
-  font-size: 25px; /* تصغير بسيط عشان العناوين الطويلة */
+  font-size: 25px;
+  /* تصغير بسيط عشان العناوين الطويلة */
   letter-spacing: -1px;
 }
 
@@ -1545,7 +1655,8 @@ ul {
 
 .pricing .box .amount {
   display: block;
-  font-size: 45px; /* ميزان أفضل */
+  font-size: 45px;
+  /* ميزان أفضل */
   font-weight: bold;
   margin-bottom: 5px;
   color: var(--main-color);
@@ -1567,7 +1678,8 @@ ul {
 .pricing .box ul li::before {
   font-family: "Font Awesome 5 Free";
   content: "\f00c";
-  margin-left: 10px; /* المسافة من اليسار لأن الكلام عربي */
+  margin-left: 10px;
+  /* المسافة من اليسار لأن الكلام عربي */
   font-weight: 900;
   color: var(--main-color);
 }
@@ -1596,20 +1708,41 @@ ul {
   .pricing .container {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)) !important;
   }
+
   .pricing .box.popular {
-    top: 0; /* إلغاء الإزاحة في الموبايل */
+    top: 0;
+    /* إلغاء الإزاحة في الموبايل */
   }
+
   .dots {
-    display: none; /* إخفاء النقط لمنع السكرول العرضي */
+    display: none;
+    /* إخفاء النقط لمنع السكرول العرضي */
   }
 }
+
 .suggestion-box {
-    position: absolute; background: white; border: 1px solid #2196f3;
-    width: 100%; max-height: 150px; overflow-y: auto; z-index: 1000;
-    border-radius: 0 0 10px 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: absolute;
+  background: white;
+  border: 1px solid #2196f3;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1000;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-.suggest-item { padding: 10px; cursor: pointer; text-align: right; border-bottom: 1px solid #eee; }
-.suggest-item:hover { background: #e3f2fd; }
+
+.suggest-item {
+  padding: 10px;
+  cursor: pointer;
+  text-align: right;
+  border-bottom: 1px solid #eee;
+}
+
+.suggest-item:hover {
+  background: #e3f2fd;
+}
+
 /* End Pricing */
 /* Start Videos */
 .videos {
@@ -1684,12 +1817,12 @@ ul {
 /* Start Stats - عطر الشرق */
 .stats {
   /* 1. المسافة البيضاء الفاصلة بين السكاشن */
-  margin-top: var(--main-padding-top); 
-  
+  margin-top: var(--main-padding-top);
+
   /* 2. المسافات الداخلية جوه السيكشن نفسه */
   padding-top: var(--main-padding-top);
   padding-bottom: var(--main-padding-bottom);
-  
+
   position: relative;
   background-color: var(--section-background);
 }
@@ -1728,8 +1861,16 @@ ul {
   transition: 0.6s;
   height: 0;
 }
-.stats .box::before { top: 0; right: 0; }
-.stats .box::after { left: 0; bottom: 0; }
+
+.stats .box::before {
+  top: 0;
+  right: 0;
+}
+
+.stats .box::after {
+  left: 0;
+  bottom: 0;
+}
 
 /* الأنميشن (الطلوع لفوق والخطوط) */
 .stats .box:hover {
@@ -1764,16 +1905,20 @@ ul {
     padding-top: calc(var(--main-padding-top) / 2);
     padding-bottom: calc(var(--main-padding-bottom) / 2);
   }
+
   .stats .container {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)) !important;
   }
+
   .stats h2 {
     font-size: 30px;
   }
+
   .stats .box .number {
     font-size: 35px;
   }
 }
+
 /* End Stats */
 /* Start Discount */
 .discount {
@@ -2006,10 +2151,12 @@ ul {
   color: #b9b9b9;
   margin-bottom: 15px;
 }
-.footer .box .line  {
+
+.footer .box .line {
   color: #b9b9b9;
 }
-.footer .box .line  a{
+
+.footer .box .line a {
   color: #b9b9b9;
 }
 
@@ -2038,7 +2185,7 @@ ul {
   flex: 1;
 }
 
-.footer .box .line .info span{
+.footer .box .line .info span {
   color: #777;
 }
 
@@ -2489,142 +2636,198 @@ ul {
 /* انهاء بوباب العرض */
 /* بداية برفانات الكوبي  */
 .atr-exclusive-zone {
-    padding: 30px 0 !important;
-    background: #f9f9f9; /* الخلفية الفاتحة اللي طلبتها */
-    direction: ltr !important;
-    text-align: center;
-    min-height: auto !important;
-    height: 60%;
+  padding: 30px 0 !important;
+  background: #f9f9f9;
+  /* الخلفية الفاتحة اللي طلبتها */
+  direction: ltr !important;
+  text-align: center;
+  /* min-height: auto !important; */
+  margin-top: 80px;
+  margin-bottom: 100px;
+height: 90%;
 }
 
 /* العنوان بلون موقعك الأزرق */
-.atr-main-title { color: #2196f3; font-size: 26px; margin-bottom: 25px; direction: rtl; }
+.atr-main-title {
+  color: #2196f3;
+  font-size: 26px;
+  margin-bottom: 25px;
+  direction: rtl;
+}
 
-.atr-tabs-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 25px; direction: rtl; }
+.atr-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  direction: rtl;
+}
 
 /* أزرار التبديل بالأزرق */
 .atr-tab-btn {
-    padding: 10px 22px; 
-    border: 2px solid #2196f3; 
-    background: transparent;
-    color: #2196f3; 
-    cursor: pointer; 
-    border-radius: 30px; 
-    font-weight: bold;
+  padding: 10px 22px;
+  border: 2px solid #2196f3;
+  background: transparent;
+  color: #2196f3;
+  cursor: pointer;
+  border-radius: 30px;
+  font-weight: bold;
 }
 
 /* الزرار النشط */
-.atr-tab-btn.atr-active { 
-    background: #2196f3; 
-    color: #fff; 
-    box-shadow: 0 0 10px rgba(33, 150, 243, 0.4); 
+.atr-tab-btn.atr-active {
+  background: #2196f3;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(33, 150, 243, 0.4);
 }
 
-.atr-panel-box { display: none !important; }
-.atr-visible { display: block !important; height: auto !important; }
+.atr-panel-box {
+  display: none !important;
+}
 
-.atr-exclusive-zone .swiper { width: 100%; padding: 20px 0 !important; max-width: 1200px; margin: 0 auto; height: auto !important; }
-.atr-exclusive-zone .swiper-slide { height: auto !important; background: transparent !important; cursor: pointer; display: flex; justify-content: center; }
+.atr-visible {
+  display: block !important;
+  height: auto !important;
+}
+
+.atr-exclusive-zone .swiper {
+  width: 100%;
+  padding: 20px 0 !important;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: auto !important;
+}
+
+.atr-exclusive-zone .swiper-slide {
+  height: auto !important;
+  background: transparent !important;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
 
 .atr-exclusive-zone .swiper-slide img {
-    width: 100%; max-width: 230px; height: 280px; object-fit: cover;
-    border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* ظل خفيف ليناسب الخلفية الفاتحة */
+  width: 100%;
+  max-width: 230px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  /* ظل خفيف ليناسب الخلفية الفاتحة */
 }
 
 /* الصورة النشطة بإطار أزرق */
-.atr-exclusive-zone .swiper-slide-active img { border: 2px solid #2196f3; transform: scale(1.1); }
+.atr-exclusive-zone .swiper-slide-active img {
+  border: 2px solid #2196f3;
+  transform: scale(1.1);
+}
 
 /* إلغاء الظلال الوهمية التي تمط الحجم */
-.swiper-slide-shadow-top, .swiper-slide-shadow-bottom, 
-.swiper-slide-shadow-left, .swiper-slide-shadow-right { display: none !important; }
+.swiper-slide-shadow-top,
+.swiper-slide-shadow-bottom,
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none !important;
+}
 
 /* البوب اب */
 .atr-modal-bg {
-    display: none; 
-    position: fixed; 
-    z-index: 10001; 
-    left: 0; top: 0;
-    width: 100%; height: 100%; 
-    background: rgba(0,0,0,0.7); /* تقليل الشفافية شوية عشان الخلفية فاتحة */
-    align-items: center; 
-    justify-content: center; 
-    backdrop-filter: blur(8px);
+  display: none;
+  position: fixed;
+  z-index: 10001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  /* تقليل الشفافية شوية عشان الخلفية فاتحة */
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
 }
 
 /* جسم البوب آب */
 .atr-modal-box {
-    background: #ffffff; /* خلفية البوب اب بيضاء عشان الكلام يبان */
-    width: 95%; 
-    max-width: 800px; 
-    border-radius: 20px;
-    position: relative; 
-    border: 2px solid #2196f3; 
-    direction: rtl;
-    overflow: hidden;
-    display: flex; 
-    flex-wrap: wrap;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  background: #ffffff;
+  /* خلفية البوب اب بيضاء عشان الكلام يبان */
+  width: 95%;
+  max-width: 800px;
+  border-radius: 20px;
+  position: relative;
+  border: 2px solid #2196f3;
+  direction: rtl;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.atr-modal-box img { 
-    width: 100% !important; 
-    flex: 1 1 400px; 
-    height: 450px !important; 
-    object-fit: cover; 
-    border-radius: 0; 
-    background: #eee;
+.atr-modal-box img {
+  width: 100% !important;
+  flex: 1 1 400px;
+  height: 450px !important;
+  object-fit: cover;
+  border-radius: 0;
+  background: #eee;
 }
 
 /* تنسيق الكلام */
-.atr-pop-info { 
-    flex: 1 1 300px; 
-    padding: 30px; 
-    color: #333 !important; /* اللون الرمادي الغامق اللي طلبته */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.atr-pop-info {
+  flex: 1 1 300px;
+  padding: 30px;
+  color: #333 !important;
+  /* اللون الرمادي الغامق اللي طلبته */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.atr-pop-info h3 { 
-    color: #2196f3 !important; 
-    font-size: 28px; 
-    margin-bottom: 15px; 
+.atr-pop-info h3 {
+  color: #2196f3 !important;
+  font-size: 28px;
+  margin-bottom: 15px;
 }
 
 /* السعر بلون موقعك بردو */
-.atr-pop-price { 
-    color: #2196f3 !important; 
-    font-size: 24px; 
-    font-weight: bold; 
-    margin: 15px 0; 
+.atr-pop-price {
+  color: #2196f3 !important;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 15px 0;
 }
 
-.atr-modal-close { 
-    position: absolute; 
-    right: 15px; 
-    top: 10px; 
-    font-size: 40px; 
-    color: #2196f3 !important; 
-    cursor: pointer; 
-    z-index: 10002;
-    font-weight: bold;
+.atr-modal-close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 40px;
+  color: #2196f3 !important;
+  cursor: pointer;
+  z-index: 10002;
+  font-weight: bold;
 }
 
-.atr-pop-btn { 
-    display: block; 
-    background: #2196f3; 
-    color: #fff !important; 
-    text-decoration: none; 
-    padding: 15px; 
-    border-radius: 50px; 
-    font-weight: bold;
-    font-size: 18px;
-    margin-top: 10px;
+.atr-pop-btn {
+  display: block;
+  background: #2196f3;
+  color: #fff !important;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
 }
 
 @media (max-width: 600px) {
-    .atr-modal-box img { height: 300px !important; }
-    .atr-pop-info { padding: 20px; }
+  .atr-modal-box img {
+    height: 300px !important;
+  }
+
+  .atr-pop-info {
+    padding: 20px;
+  }
 }
+
 /* نهاية البرفانات الكوبي */
