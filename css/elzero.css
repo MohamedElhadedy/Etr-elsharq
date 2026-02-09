@@ -455,6 +455,7 @@ ul {
 
 /* End Landing */
 /* Start Articles */
+/* --- سيكشن المنتجات (Articles) - عطر الشرق --- */
 .articles {
   padding-top: var(--main-padding-top);
   padding-bottom: var(--main-padding-bottom);
@@ -473,6 +474,9 @@ ul {
   border-radius: 6px;
   overflow: hidden;
   transition: transform var(--main-transition), box-shadow var(--main-transition);
+  /* بيخلي كل الصناديق طول واحد حتى لو الكلام مختلف */
+  display: flex;
+  flex-direction: column;
 }
 
 .articles .box:hover {
@@ -480,13 +484,21 @@ ul {
   box-shadow: 0 2px 15px rgb(0 0 0 / 20%);
 }
 
+/* التعديل الجوهري اللي هيحل مشكلة الصور الكبيرة والصغيرة */
 .articles .box img {
-  width: 100%;
-  max-width: 100%;
+  width: 100% !important;
+  /* إجبار الصورة على ارتفاع ثابت عشان المربعات تتساوى */
+  height: 250px !important; 
+  /* السر هنا: بيخلي الصورة تملى المربع وتقص الزيادة من غير ما تتمط */
+  object-fit: cover !important; 
+  /* بيسنتر إزازة البرفان في نص المربع بالظبط */
+  object-position: center !important;
+  display: block;
 }
 
 .articles .box .content {
   padding: 20px;
+  flex-grow: 1;
 }
 
 .articles .box .content h3 {
@@ -518,6 +530,18 @@ ul {
 
 .articles .box:hover .info i {
   animation: moving-arrow 0.6s linear infinite;
+}
+
+/* تنسيق مخصوص للموبايل عشان الصور متبقاش ضخمة أوي */
+@media (max-width: 767px) {
+  .articles .container {
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  .articles .box img {
+    /* تقليل الارتفاع في الموبايل عشان الشكل يبقى ألطف والزبون يشوف منتجات أكتر */
+    height: 200px !important; 
+  }
 }
 
 /* End Articles */
@@ -657,6 +681,7 @@ ul {
 
 /* نهاية الاسعار */
 /* Start Gallery - عطر الشرق */
+/* --- سيكشن الأكثر مبيعاً (Gallery) - عطر الشرق --- */
 .gallery {
   padding-top: var(--main-padding-top);
   padding-bottom: var(--main-padding-bottom);
@@ -666,82 +691,71 @@ ul {
 
 .gallery .container {
   display: grid;
-  /* التعديل لـ 350px لضمان 3 كروت في الصف الواحد للشاشات الكبيرة */
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 40px;
 }
 
 .gallery .box {
   padding: 15px;
   background-color: white;
-  box-shadow: 0px 12px 20px 0px rgb(0 0 0 / 13%), 0px 2px 4px 0px rgb(0 0 0 / 12%);
+  box-shadow: 0px 12px 20px 0px rgb(0 0 0 / 13%);
   transition: var(--main-transition);
+  border-radius: 8px;
 }
 
+/* 1. صندوق الصورة والكلمة */
 .gallery .box .image {
   position: relative;
-  overflow: hidden;
+  /* اللقطة اللي طلبتها عشان الزيادات تختفي */
+  overflow: hidden !important; 
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; 
+  background-color: #fdfdfd;
+  border-radius: 8px; /* عشان الحواف المقطوعة تكون ناعمة */
 }
 
-.gallery .box .image::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgb(255 255 255 / 20%);
-  width: 0;
-  height: 0;
-  opacity: 0;
-  z-index: 2;
-}
-
-.gallery .box .image:hover::before {
-  animation: flashing 0.7s;
-}
-
+/* 2. تكبير الصورة لتمسك المربع */
 .gallery .box img {
-  max-width: 100%;
-  transition: var(--main-transition);
+  width: 100% !important; 
+  height: 85% !important; 
+  object-fit: cover !important; 
+  /* إضافة التوقيت عشان الزوم يبقى انسيابي */
+  transition: transform var(--main-transition) ease-in-out !important; 
+  display: block;
+}
+
+/* 3. اسم البرفان في نص المربع من تحت */
+.gallery .box .image h2 {
+  margin: 0 !important;
+  padding: 5px 0 !important;
+  color: var(--main-color) !important;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8); 
+  position: absolute;
+  bottom: 0;
+  z-index: 2; /* يضمن إن الاسم يفضل فوق الصورة وقت الزوم */
 }
 
 .gallery .box .image:hover img {
-  transform: rotate(5deg) scale(1.1);
+  transform: scale(1.1);
 }
 
-/* تنسيق اسم العطر */
-.gallery .box h2 {
-  text-align: center;
-  margin-top: 15px;
-  color: var(--main-color);
-  font-size: 22px;
-}
-
-/* تأثير الفلاش */
-@keyframes flashing {
-
-  0%,
-  40% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    width: 200%;
-    height: 200%;
-  }
-}
-
-/* --- ضبط ميزان الموبايل (أهم جزء) --- */
+/* --- ضبط الموبايل --- */
 @media (max-width: 767px) {
   .gallery .container {
-    /* يملأ الشاشة تماماً ويمنع الخروج يميناً أو يساراً */
-    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)) !important;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px;
+    padding: 0 10px;
   }
-
-  .gallery .box h2 {
-    font-size: 18px;
+  .gallery .box .image h2 {
+    font-size: 14px !important;
   }
 }
 
@@ -1172,6 +1186,7 @@ ul {
 
 /* End Services */
 /* Start Skills */
+/* --- سيكشن معايير الجودة (our-skills) - عطر الشرق المطور --- */
 .our-skills {
   padding-top: var(--main-padding-top);
   padding-bottom: var(--main-padding-bottom);
@@ -1182,102 +1197,65 @@ ul {
 .our-skills .container {
   display: flex;
   align-items: center;
-
+  gap: 50px; /* مسافة محترمة بين الصورة والبارات */
 }
 
-@media (max-width: 991px) {
-  .our-skills img {
-    display: none;
-  }
-}
-
+/* ضبط الصورة لتأخذ مساحتها في الديسكتوب */
 .our-skills img {
-  max-width: 100%;
+  flex: 1; 
+  max-width: 350px; /* العرض اللي يخليها واضحة ومش ضخمة بزيادة */
   height: auto;
-  max-height: 413px;
   object-fit: contain;
-  margin: 10px;
+  border-radius: 8px;
 }
 
 .our-skills .skills {
   flex: 1;
 }
 
+.our-skills .skill {
+  margin-bottom: 20px;
+}
+
 .our-skills .skill h3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .our-skills .skill h3 span {
   font-size: 15px;
   border: 1px solid #ccc;
-  padding: 3px 5px;
+  padding: 3px 8px;
   border-radius: 4px;
   color: var(--main-color);
+  font-weight: bold;
 }
 
+/* الحاوية الخارجية لشريط التقدم */
 .our-skills .skill .the-progress {
-  height: 30px;
-  background-color: darkgray;
-  position: relative;
-}
-
-.our-skills .skill .the-progress span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  /* 1. تدرج لوني يخلي الشريط ليه أبعاد (اللون الأزرق مع درجة أغمق شوية) */
-  background: linear-gradient(90deg, var(--main-color) 0%, #1a73e8 100%);
-
-  /* 2. سرعة الزحف الهادئة اللي طلبته */
-  transition: width 2.5s ease-in-out;
-
-  /* 3. إضافة لمعة خفيفة (Glossy Effect) */
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3),
-    0 2px 4px rgba(0, 0, 0, 0.2);
-
-  border-radius: 4px;
-  /* جعل الحواف ناعمة */
-}
-
-/* 4. حركة "اللمعة" المتحركة (اختياري لكنه يعطي لمسة جمالية) */
-/* --- ستايل البروجريس بار الاحترافي لـ عطر الشرق --- */
-
-/* 1. الحاوية الخارجية للشريط */
-.our-skills .skill .the-progress {
-  height: 15px;
-  /* طول مناسب وشيك */
+  height: 18px;
   background-color: #eee;
-  /* لون الخلفية رمادي فاتح */
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  /* ضروري عشان اللمعة متطلعش بره الحواف */
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* ظل داخلي بيدي عمق */
 }
 
-/* 2. الشريط المتحرك (الـ Span) */
+/* الشريط المتحرك (اللمعة واللون) */
 .our-skills .skill .the-progress span {
   position: absolute;
   top: 0;
-  right: 0;
-  /* التعديل هنا: يبدأ من اليمين للشمال */
+  right: 0; /* يبدأ التحرك من اليمين للشمال */
   height: 100%;
-
-  /* تدرج لوني فخم (من الأزرق الفاتح للأزرق الملكي) */
   background: linear-gradient(270deg, var(--main-color) 0%, #1a73e8 100%);
-
-  /* السرعة الهادية (2.5 ثانية) مع حركة انسيابية */
   transition: width 2.5s ease-in-out;
-
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* 3. إضافة تأثير اللمعة المتحركة (Glossy Effect) */
+/* إضافة تأثير اللمعة المتحركة */
 .our-skills .skill .the-progress span::after {
   content: "";
   position: absolute;
@@ -1285,34 +1263,32 @@ ul {
   right: 0;
   width: 100%;
   height: 100%;
-  /* لمعة بيضاء شفافة */
   background: linear-gradient(90deg,
       rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0.4) 50%,
       rgba(255, 255, 255, 0) 100%);
-  animation: shine 3s infinite;
+  animation: shine-bar 3s infinite;
 }
 
-/* 4. محرك حركة اللمعة */
-@keyframes shine {
-  0% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
+/* محرك حركة اللمعة */
+@keyframes shine-bar {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
 
-/* --- نهاية ستايل البروجريس --- */
-
-@keyframes shine {
-  0% {
-    transform: translateX(-100%);
+/* ضبط الموبايل: الصورة تظهر فوق البارات بشكل شيك */
+@media (max-width: 991px) {
+  .our-skills .container {
+    flex-direction: column;
+    text-align: center;
   }
-
-  100% {
-    transform: translateX(100%);
+  .our-skills img {
+    max-width: 80%;
+    margin: 0 auto 30px;
+    display:none; 
+  }
+  .our-skills .skills {
+    width: 100%;
   }
 }
 
@@ -2635,24 +2611,23 @@ ul {
 
 /* انهاء بوباب العرض */
 /* بداية برفانات الكوبي  */
+/* --- سيكشن معرض عطر الشرق الخاص --- */
 .atr-exclusive-zone {
   padding: 30px 0 !important;
   background: #f9f9f9;
-  /* الخلفية الفاتحة اللي طلبتها */
   direction: ltr !important;
   text-align: center;
-  /* min-height: auto !important; */
-  margin-top: 80px;
-  margin-bottom: 100px;
-height: 90%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 90%;
 }
 
-/* العنوان بلون موقعك الأزرق */
 .atr-main-title {
   color: #2196f3;
   font-size: 26px;
-  margin-bottom: 25px;
+  margin-bottom: 50px;
   direction: rtl;
+  margin-top: 40px;
 }
 
 .atr-tabs-nav {
@@ -2663,7 +2638,6 @@ height: 90%;
   direction: rtl;
 }
 
-/* أزرار التبديل بالأزرق */
 .atr-tab-btn {
   padding: 10px 22px;
   border: 2px solid #2196f3;
@@ -2674,7 +2648,6 @@ height: 90%;
   font-weight: bold;
 }
 
-/* الزرار النشط */
 .atr-tab-btn.atr-active {
   background: #2196f3;
   color: #fff;
@@ -2690,6 +2663,7 @@ height: 90%;
   height: auto !important;
 }
 
+/* --- تنسيق السلايدر --- */
 .atr-exclusive-zone .swiper {
   width: 100%;
   padding: 20px 0 !important;
@@ -2713,24 +2687,14 @@ height: 90%;
   object-fit: cover;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  /* ظل خفيف ليناسب الخلفية الفاتحة */
 }
 
-/* الصورة النشطة بإطار أزرق */
 .atr-exclusive-zone .swiper-slide-active img {
   border: 2px solid #2196f3;
   transform: scale(1.1);
 }
 
-/* إلغاء الظلال الوهمية التي تمط الحجم */
-.swiper-slide-shadow-top,
-.swiper-slide-shadow-bottom,
-.swiper-slide-shadow-left,
-.swiper-slide-shadow-right {
-  display: none !important;
-}
-
-/* البوب اب */
+/* --- تنسيق البوب آب (Modal) --- */
 .atr-modal-bg {
   display: none;
   position: fixed;
@@ -2740,56 +2704,65 @@ height: 90%;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
-  /* تقليل الشفافية شوية عشان الخلفية فاتحة */
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(8px);
 }
 
-/* جسم البوب آب */
+/* جسم البوب آب - توحيد العرض والترتيب */
 .atr-modal-box {
   background: #ffffff;
-  /* خلفية البوب اب بيضاء عشان الكلام يبان */
   width: 95%;
-  max-width: 800px;
+  max-width: 800px; /* العرض الثابت للصندوق */
   border-radius: 20px;
   position: relative;
   border: 2px solid #2196f3;
   direction: rtl;
   overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
+  display: flex; /* تفعيل الـ Flex عشان الصورة يمين والكلام شمال */
+  flex-wrap: nowrap; /* ممنوع العناصر تنزل تحت بعض في الشاشات الكبيرة */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  align-items: stretch;
 }
 
+/* توحيد حجم الصورة - الحل النهائي */
 .atr-modal-box img {
-  width: 100% !important;
-  flex: 1 1 400px;
-  height: 450px !important;
-  object-fit: cover;
+  width: 400px !important; /* عرض ثابت للصورة مهما كانت مساحتها */
+  height: 450px !important; /* طول ثابت وموحد للكل */
+  object-fit: cover !important; /* قص الزيادات عشان الصورة متتمطش */
   border-radius: 0;
   background: #eee;
+  flex-shrink: 0; /* منع الصورة إنها تصغر أو تكبر */
 }
 
-/* تنسيق الكلام */
+/* تنسيق الكلام (الشمال) */
 .atr-pop-info {
-  flex: 1 1 300px;
+  flex: 1;
   padding: 30px;
   color: #333 !important;
-  /* اللون الرمادي الغامق اللي طلبته */
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+/* الموبايل - نخليهم فوق بعض عشان الشاشة ضيقة */
+@media (max-width: 767px) {
+  .atr-modal-box {
+    flex-direction: column; /* فوق بعض في الموبايل */
+    max-width: 90%;
+  }
+  .atr-modal-box img {
+    width: 100% !important; /* تاخد العرض كله في الموبايل */
+    height: 280px !important; /* طول مناسب للموبايل */
+  }
+}
 .atr-pop-info h3 {
   color: #2196f3 !important;
   font-size: 28px;
   margin-bottom: 15px;
 }
 
-/* السعر بلون موقعك بردو */
 .atr-pop-price {
   color: #2196f3 !important;
   font-size: 24px;
@@ -2820,9 +2793,12 @@ height: 90%;
   margin-top: 10px;
 }
 
+/* ضبط الموبايل - مسطرة واحدة للكل */
 @media (max-width: 600px) {
   .atr-modal-box img {
-    height: 300px !important;
+    height: 250px !important;
+    /* طول مثالي للموبايل مبيغطيش الشاشة */
+    flex: 1 1 100%;
   }
 
   .atr-pop-info {
